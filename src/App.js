@@ -77,7 +77,7 @@ export default function App() {
     tokenId: ''
   });
 
-  const responseGoogle = ({ username, email }) => {
+  const responseGoogle = (response) => {
     const username = response.tt.Ad;
     const email = response.tt.$t;
     const tokenId = response.tokenId;
