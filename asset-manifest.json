@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/static/js/main.72bdffd0.chunk.js",
-    "main.js.map": "/static/js/main.72bdffd0.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.3979adde.js",
-    "runtime-main.js.map": "/static/js/runtime-main.3979adde.js.map",
-    "static/js/2.145d4036.chunk.js": "/static/js/2.145d4036.chunk.js",
-    "static/js/2.145d4036.chunk.js.map": "/static/js/2.145d4036.chunk.js.map",
-    "index.html": "/index.html",
-    "static/js/2.145d4036.chunk.js.LICENSE.txt": "/static/js/2.145d4036.chunk.js.LICENSE.txt"
+    "main.js": "/cra-google-login/static/js/main.72bdffd0.chunk.js",
+    "main.js.map": "/cra-google-login/static/js/main.72bdffd0.chunk.js.map",
+    "runtime-main.js": "/cra-google-login/static/js/runtime-main.b7e81563.js",
+    "runtime-main.js.map": "/cra-google-login/static/js/runtime-main.b7e81563.js.map",
+    "static/js/2.145d4036.chunk.js": "/cra-google-login/static/js/2.145d4036.chunk.js",
+    "static/js/2.145d4036.chunk.js.map": "/cra-google-login/static/js/2.145d4036.chunk.js.map",
+    "index.html": "/cra-google-login/index.html",
+    "static/js/2.145d4036.chunk.js.LICENSE.txt": "/cra-google-login/static/js/2.145d4036.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3979adde.js",
+    "static/js/runtime-main.b7e81563.js",
     "static/js/2.145d4036.chunk.js",
     "static/js/main.72bdffd0.chunk.js"
   ]
