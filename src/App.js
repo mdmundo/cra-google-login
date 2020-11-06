@@ -1,10 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -67,6 +71,10 @@ const useStyles = makeStyles((theme) => ({
   },
   fixedHeight: {
     height: 240
+  },
+  clip: {
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(0)
   }
 }));
 
@@ -139,10 +147,19 @@ export default function App() {
               {state.email}
             </Typography>
             <div>
-              <Link color='primary' href='#'>
-                Copy Token
-              </Link>
+              <CopyToClipboard text={state.tokenId}>
+                <Tooltip title='Copy Token to Clipboard' placement='right'>
+                  <IconButton
+                    aria-label='clipboard'
+                    color='primary'
+                    className={classes.clip}
+                    size='large'>
+                    <AssignmentTurnedInIcon fontSize='inherit' />
+                  </IconButton>
+                </Tooltip>
+              </CopyToClipboard>
             </div>
+            <div></div>
           </Paper>
         </Grid>
       </Container>
