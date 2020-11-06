@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,6 +8,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import { GoogleLogin } from 'react-google-login';
 
 function Copyright() {
@@ -22,10 +25,6 @@ function Copyright() {
   );
 }
 
-const responseGoogle = (response) => {
-  console.log(response);
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -36,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2)
   },
-  paper: {
-    marginTop: theme.spacing(8),
+  mainPaper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -60,17 +58,41 @@ const useStyles = makeStyles((theme) => ({
       theme.palette.type === 'light'
         ? theme.palette.grey[200]
         : theme.palette.grey[800]
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column'
+  },
+  fixedHeight: {
+    height: 240
   }
 }));
 
 export default function App() {
+  const [state, setState] = React.useState({
+    username: 'User Name',
+    email: 'User Email',
+    tokenId: ''
+  });
+
+  const responseGoogle = ({ username, email }) => {
+    const username = response.tt.Ad;
+    const email = response.tt.$t;
+    const tokenId = response.tokenId;
+
+    setState({ username, email, tokenId });
+  };
+
   const classes = useStyles();
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
       <Container component='main' className={classes.main} maxWidth='xs'>
         <CssBaseline />
-        <div className={classes.paper}>
+        <div className={classes.mainPaper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
@@ -99,6 +121,30 @@ export default function App() {
             />
           </div>
         </div>
+        <Grid item>
+          <Paper className={fixedHeightPaper}>
+            <Typography
+              component='h2'
+              variant='h6'
+              color='primary'
+              gutterBottom>
+              User Data
+            </Typography>
+            <Typography component='p' variant='h4'>
+              {state.username}
+            </Typography>
+            <Typography
+              color='textSecondary'
+              className={classes.depositContext}>
+              {state.email}
+            </Typography>
+            <div>
+              <Link color='primary' href='#'>
+                Copy Token
+              </Link>
+            </div>
+          </Paper>
+        </Grid>
       </Container>
       <footer className={classes.footer}>
         <Container maxWidth='sm'>
