@@ -153,7 +153,8 @@ export default function App() {
                     aria-label='clipboard'
                     color='primary'
                     className={classes.clip}
-                    size='large'>
+                    size='medium'
+                    disabled={!state.tokenId}>
                     <AssignmentTurnedInIcon fontSize='inherit' />
                   </IconButton>
                 </Tooltip>
