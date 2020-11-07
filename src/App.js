@@ -17,10 +17,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { GoogleLogin } from 'react-google-login';
 
-function Copyright() {
+const Copyright = () => {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
+      {'Created by '}
       <Link color='inherit' href='https://github.com/mdmundo'>
         Edmundo Paulino
       </Link>{' '}
@@ -28,7 +28,7 @@ function Copyright() {
       {'.'}
     </Typography>
   );
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function App() {
+export default () => {
   const [state, setState] = React.useState({
     username: 'User Name',
     email: 'User Email',
@@ -180,4 +180,4 @@ export default function App() {
       </footer>
     </div>
   );
-}
+};
