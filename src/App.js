@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import Assignment from '@material-ui/icons/Assignment';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -82,7 +83,8 @@ export default function App() {
   const [state, setState] = React.useState({
     username: 'User Name',
     email: 'User Email',
-    tokenId: ''
+    tokenId: '',
+    copied: false
   });
 
   const responseGoogle = (response) => {
@@ -90,7 +92,11 @@ export default function App() {
     const email = response.tt.$t;
     const tokenId = response.tokenId;
 
-    setState({ username, email, tokenId });
+    setState({ username, email, tokenId, copied: false });
+  };
+
+  const onCopy = () => {
+    setState({ ...state, copied: true });
   };
 
   const classes = useStyles();
@@ -124,7 +130,6 @@ export default function App() {
               )}
               buttonText='Login'
               onSuccess={responseGoogle}
-              onFailure={responseGoogle}
               cookiePolicy={'single_host_origin'}
             />
           </div>
@@ -147,7 +152,7 @@ export default function App() {
               {state.email}
             </Typography>
             <div>
-              <CopyToClipboard text={state.tokenId}>
+              <CopyToClipboard text={state.tokenId} onCopy={onCopy}>
                 <Tooltip title='Copy Token to Clipboard' placement='right'>
                   <IconButton
                     aria-label='clipboard'
@@ -155,7 +160,11 @@ export default function App() {
                     className={classes.clip}
                     size='medium'
                     disabled={!state.tokenId}>
-                    <AssignmentTurnedInIcon fontSize='inherit' />
+                    {state.copied ? (
+                      <AssignmentTurnedInIcon fontSize='large' />
+                    ) : (
+                      <Assignment fontSize='large' />
+                    )}
                   </IconButton>
                 </Tooltip>
               </CopyToClipboard>
