@@ -2,7 +2,7 @@
   "name": "cra-google-login",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mdmundo.github.io/cra-google-login",
+  "homepage": "https://mdmundo.github.io/cra-google-login/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
