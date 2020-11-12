@@ -1,21 +1,20 @@
-import React from 'react';
-import clsx from 'clsx';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { GoogleLogin } from 'react-google-login';
+import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import Assignment from '@material-ui/icons/Assignment';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
-import Assignment from '@material-ui/icons/Assignment';
-import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { GoogleLogin } from 'react-google-login';
 
 const Copyright = () => {
   return (
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(2)
   },
-  mainPaper: {
+  login: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
@@ -79,11 +78,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default () => {
-  const [state, setState] = React.useState({
+const App = () => {
+  const [state, setState] = useState({
     username: 'User Name',
     email: 'User Email',
     tokenId: '',
+    thumbnail: '',
     copied: false
   });
 
@@ -91,8 +91,9 @@ export default () => {
     const username = response.tt.Ad;
     const email = response.tt.$t;
     const tokenId = response.tokenId;
+    const thumbnail = response.tt.dK;
 
-    setState({ username, email, tokenId, copied: false });
+    setState({ username, email, tokenId, thumbnail, copied: false });
   };
 
   const onCopy = () => {
@@ -100,16 +101,19 @@ export default () => {
   };
 
   const classes = useStyles();
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
     <div className={classes.root}>
       <Container component='main' className={classes.main} maxWidth='xs'>
         <CssBaseline />
-        <div className={classes.mainPaper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+        <div className={classes.login}>
+          {state.thumbnail ? (
+            <Avatar src={state.thumbnail} className={classes.avatar} />
+          ) : (
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+          )}
           <Typography component='h1' variant='h3'>
             Login
           </Typography>
@@ -135,7 +139,7 @@ export default () => {
           </div>
         </div>
         <Grid item>
-          <Paper className={fixedHeightPaper}>
+          <Paper className={classes.paper}>
             <Typography
               component='h2'
               variant='h6'
@@ -169,7 +173,6 @@ export default () => {
                 </Tooltip>
               </CopyToClipboard>
             </div>
-            <div></div>
           </Paper>
         </Grid>
       </Container>
@@ -181,3 +184,5 @@ export default () => {
     </div>
   );
 };
+
+export { App as default };
