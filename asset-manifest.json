@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/cra-google-login/static/js/main.371a4061.chunk.js",
-    "main.js.map": "/cra-google-login/static/js/main.371a4061.chunk.js.map",
+    "main.js": "/cra-google-login/static/js/main.b49e3de9.chunk.js",
+    "main.js.map": "/cra-google-login/static/js/main.b49e3de9.chunk.js.map",
     "runtime-main.js": "/cra-google-login/static/js/runtime-main.b7e81563.js",
     "runtime-main.js.map": "/cra-google-login/static/js/runtime-main.b7e81563.js.map",
     "static/js/2.30b7139e.chunk.js": "/cra-google-login/static/js/2.30b7139e.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.b7e81563.js",
     "static/js/2.30b7139e.chunk.js",
-    "static/js/main.371a4061.chunk.js"
+    "static/js/main.b49e3de9.chunk.js"
   ]
 }
