@@ -88,10 +88,10 @@ const App = () => {
   });
 
   const responseGoogle = (response) => {
-    const username = response.tt.Ad;
-    const email = response.tt.$t;
+    const username = response.profileObj.name;
+    const email = response.profileObj.email;
     const tokenId = response.tokenId;
-    const thumbnail = response.tt.dK;
+    const thumbnail = response.profileObj.imageUrl;
 
     setState({ username, email, tokenId, thumbnail, copied: false });
   };
